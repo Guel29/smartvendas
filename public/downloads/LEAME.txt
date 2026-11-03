@@ -1,0 +1,44 @@
+==============================================================================
+ SMART VENDAS - GUIA DE CONFIGURAÇÃO DO AGENTE LOCAL (VR SOFTWARE / WINDOWS)
+==============================================================================
+
+ONDE CONSEGUIR CADA INFORMAÇÃO SOLICITADA NO "CONFIGURAR.bat":
+
+1. URL DA API CENTRAL:
+   - É o endereço onde você instalou o Smart Vendas na Hostinger.
+   - Exemplo: https://seusite.com.br/smartvendas/api/sync/ingest
+   - Se estiver em subdomínio: https://vendas.seusite.com.br/api/sync/ingest
+
+2. CHAVE DA LOJA (STORE_AGENT_KEY):
+   - Código único da loja para identificar os dados transmitidos.
+   - O padrão da primeira loja é: sv_live_001 (aperte ENTER).
+
+3. IP DO SERVIDOR POSTGRESQL VR (VR_PG_HOST):
+   - Se o agente estiver rodando NO PRÓPRIO COMPUTADOR DO SERVIDOR VR:
+     Basta usar: 127.0.0.1 (aperte ENTER).
+   - Se o agente estiver rodando em OUTRO COMPUTADOR da loja:
+     Vá até o computador do Servidor VR, abra o Prompt de Comando (CMD),
+     digite "ipconfig" e veja o "Endereço IPv4" (ex: 192.168.1.150).
+
+4. PORTA DO POSTGRESQL VR (VR_PG_PORT):
+   - Padrão universal do PostgreSQL e do VR Software: 5432 (aperte ENTER).
+
+5. NOME DO BANCO DE DADOS VR (VR_PG_DATABASE):
+   - Padrão do VR Software: vr (aperte ENTER).
+
+6. USUÁRIO DO POSTGRESQL (VR_PG_USER):
+   - Padrão oficial do PostgreSQL: postgres (aperte ENTER).
+
+7. SENHA DO POSTGRESQL VR (VR_PG_PASSWORD):
+   - É a senha do banco de dados configurada na instalação do VR Software.
+   - Onde encontrar:
+     a) No arquivo de configuração do próprio VR Software no servidor
+        (ex: C:\VR\vr.properties, C:\VRSoftware\conexao.ini ou similar);
+     b) Com o técnico de TI ou o suporte do VR Software que instalou o sistema;
+     c) Senhas frequentes de fábrica do VR: postgres, vr, vrsoftware, masterkey.
+
+------------------------------------------------------------------------------
+PASSO A PASSO PARA INICIAR:
+1. Dê dois cliques em CONFIGURAR.bat e responda às perguntas.
+2. Dê dois cliques em INICIAR_AGENTE.bat para transmitir as vendas em tempo real!
+==============================================================================

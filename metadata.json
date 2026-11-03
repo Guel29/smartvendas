@@ -1,0 +1,6 @@
+{
+  "name": "Smart Vendas",
+  "description": "Sistema PWA de acompanhamento de vendas de supermercados em tempo real integrado com VR Software, vendas por PDV, conciliação TEF/Pix e atualização a cada 10 segundos.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

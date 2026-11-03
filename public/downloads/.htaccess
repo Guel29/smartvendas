@@ -1,0 +1,41 @@
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  # 1. Roteamento de API para PHP (funciona em subpasta /smartvendas/, subdomínio ou raiz)
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_URI} /api/ [NC]
+  RewriteRule ^.*api/(.*)$ api/index.php?route=/$1 [QSA,L]
+
+  # 2. Compatível com PWA / Single Page Application (SPA)
+  RewriteRule ^index\.html$ - [L]
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteCond %{REQUEST_FILENAME} !-l
+  RewriteRule . index.html [L]
+</IfModule>
+
+# Cache seguro para PWA e desativação de cache para rotas dinâmicas
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType text/html "access plus 0 seconds"
+  ExpiresByType application/json "access plus 0 seconds"
+  ExpiresByType application/manifest+json "access plus 1 day"
+  ExpiresByType image/svg+xml "access plus 7 days"
+  ExpiresByType image/png "access plus 7 days"
+  ExpiresByType text/css "access plus 7 days"
+  ExpiresByType application/javascript "access plus 7 days"
+</IfModule>
+
+# Segurança de cabeçalhos
+<IfModule mod_headers.c>
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set X-Frame-Options "SAMEORIGIN"
+  Header always set X-XSS-Protection "1; mode=block"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+
+  <FilesMatch "^(index\.html|sw\.js)$">
+    Header set Cache-Control "no-cache, no-store, must-revalidate"
+    Header set Pragma "no-cache"
+    Header set Expires 0
+  </FilesMatch>
+</IfModule>
